@@ -3,7 +3,7 @@ import bs4
 import lxml
 
 url = "https://habr.com/ru/feed/"
-KEYWORDS = ['дизайн', 'фото', 'web', 'python',]
+KEYWORDS = ['дизайн', 'фото', 'web', 'python', 'ИИ']
 
 response = requests.get(url)
 
@@ -15,7 +15,7 @@ articles_list = articles_block.select('article.tm-articles-list__item')
 
 parsed_data =[]
 for i, article in enumerate(articles_list):
-    
+
     if article['class'] == ['tm-articles-list__item', 'tm-articles-list__item_no-padding']:
        continue
 
@@ -40,9 +40,14 @@ for i, article in enumerate(articles_list):
             if pp.text.find(word) != -1:
                 count += 1
     if count != 0:
-        print(time)
-        print(span_title)
-        print(link)
-        print('____________________')
-
+        parsed_data.append({
+        'time': time,
+        'title': span_title,
+        'link': link,
+    })
+        # print(time)
+        # print(span_title)
+        # print(link)
+        # print('____________________')
+print(parsed_data)
 
