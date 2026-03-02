@@ -15,9 +15,7 @@ articles_list = articles_block.select('article.tm-articles-list__item')
 
 parsed_data =[]
 for i, article in enumerate(articles_list):
-    # print(i)
-    # print(article)
-
+    
     if article['class'] == ['tm-articles-list__item', 'tm-articles-list__item_no-padding']:
        continue
 
@@ -42,9 +40,9 @@ for i, article in enumerate(articles_list):
             if pp.text.find(word) != -1:
                 count += 1
     if count != 0:
+        print(time)
         print(span_title)
         print(link)
-        print(time)
         print('____________________')
 
 
